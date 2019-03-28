@@ -1,0 +1,13 @@
+- name: Update package cache
+  apt:
+    update_cache: yes
+
+- name: Network utilities
+  apt:
+    name: "{{ packages }}"
+    state: latest
+  vars:
+    packages:
+      - dnsutils
+      - nmap 
+      - tcpdump

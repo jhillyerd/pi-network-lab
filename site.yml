@@ -1,0 +1,4 @@
+---
+- hosts: pi-network-lab
+  roles:
+    - workstation
