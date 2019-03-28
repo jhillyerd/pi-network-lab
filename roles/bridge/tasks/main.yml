@@ -1,0 +1,21 @@
+- name: install packages
+  apt:
+    name: "{{ packages }}"
+    state: latest
+  vars:
+    packages:
+      - dnsmasq
+
+- name: install dnsmasq config
+  copy:
+    dest: /etc/dnsmasq.d/pi-network-lab.conf
+    src: dnsmasq.conf
+    mode: 0644
+  register: dnsmasq_config
+
+- name: restart dnsmasq
+  service:
+    name: dnsmasq
+    state: restarted
+    enabled: yes
+  when: dnsmasq_config.changed

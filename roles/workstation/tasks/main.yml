@@ -1,8 +1,4 @@
-- name: Update package cache
-  apt:
-    update_cache: yes
-
-- name: Network utilities
+- name: install packages
   apt:
     name: "{{ packages }}"
     state: latest

@@ -1,4 +1,6 @@
 ---
 - hosts: pi-network-lab
   roles:
+    - common
+    - bridge
     - workstation
