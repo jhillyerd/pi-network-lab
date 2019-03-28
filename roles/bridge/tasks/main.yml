@@ -25,6 +25,27 @@
     enabled: yes
   when: network_config.changed
 
+- name: install nat script
+  copy:
+    dest: /etc/opt/nat-iptables.sh
+    src: nat-iptables.sh
+    mode: 0755
+  register: nat_script
+
+- name: install nat service
+  copy:
+    dest: /etc/systemd/system/nat.service
+    src: nat.service
+    mode: 0644
+  register: nat_service
+
+- name: restart nat service
+  service:
+    name: nat
+    state: restarted
+    enabled: yes
+  when: nat_script.changed or nat_service.changed
+
 - name: install dnsmasq config
   copy:
     dest: /etc/dnsmasq.d/pi-network-lab.conf
@@ -32,7 +53,7 @@
     mode: 0644
   register: dnsmasq_config
 
-- name: restart dnsmasq
+- name: restart dnsmasq service
   service:
     name: dnsmasq
     state: restarted

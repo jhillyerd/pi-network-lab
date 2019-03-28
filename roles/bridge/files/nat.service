@@ -1,0 +1,11 @@
+# iptables b/c netfilter not yet available on raspbian
+
+[Unit]
+Description=Add NAT rules to iptables
+
+[Service]
+Type=oneshot
+ExecStart=/etc/opt/nat-iptables.sh
+
+[Install]
+WantedBy=multi-user.target
