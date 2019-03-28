@@ -6,6 +6,20 @@
     packages:
       - dnsmasq
 
+- name: install lan0 config
+  copy:
+    dest: /etc/systemd/network/lan0.network
+    src: lan0.network
+    mode: 0644
+  register: network_config
+
+- name: restart networking
+  service:
+    name: systemd-networkd
+    state: restarted
+    enabled: yes
+  when: network_config.changed
+
 - name: install dnsmasq config
   copy:
     dest: /etc/dnsmasq.d/pi-network-lab.conf
@@ -18,4 +32,4 @@
     name: dnsmasq
     state: restarted
     enabled: yes
-  when: dnsmasq_config.changed
+  when: dnsmasq_config.changed or network_config.changed
