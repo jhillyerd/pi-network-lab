@@ -5,5 +5,24 @@
   vars:
     packages:
       - dnsutils
-      - nmap 
+      - nmap
       - tcpdump
+      - wireshark-qt
+
+- name: add wireshark group
+  group:
+    name: wireshark
+    state: present
+
+- name: add pi user to wireshark group
+  user:
+    name: pi
+    groups: wireshark
+    append: yes
+
+- name: configure non-root wireshark access
+  debconf:
+    name: wireshark-common
+    question: wireshark-common/install-setuid
+    value: yes
+    vtype: boolean
