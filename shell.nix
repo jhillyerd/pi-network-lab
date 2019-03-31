@@ -5,5 +5,6 @@ stdenv.mkDerivation rec {
   buildInputs = [
     ansible
     ansible-lint
+    tigervnc
   ];
 }

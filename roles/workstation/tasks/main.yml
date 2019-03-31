@@ -6,6 +6,7 @@
     packages:
       - dnsutils
       - nmap
+      - tigervnc-standalone-server
       - tcpdump
       - wireshark-qt
 
@@ -24,5 +25,5 @@
   debconf:
     name: wireshark-common
     question: wireshark-common/install-setuid
-    value: yes
+    value: "true"
     vtype: boolean
