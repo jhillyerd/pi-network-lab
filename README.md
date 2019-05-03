@@ -30,7 +30,7 @@ Run the following commands:
 ```bash
 wget https://raw.githubusercontent.com/jhillyerd/pi-network-lab/master/install-pi.sh
 
-./install-pi.sh
+sh install-pi.sh
 ```
 
 The `install-pi.sh` script will:
