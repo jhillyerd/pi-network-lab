@@ -29,8 +29,8 @@ Run the following commands:
 
 ```bash
 wget https://raw.githubusercontent.com/jhillyerd/pi-network-lab/master/install-pi.sh
-
 bash install-pi.sh
+reboot
 ```
 
 The `install-pi.sh` script will:
