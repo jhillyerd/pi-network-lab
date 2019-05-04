@@ -27,3 +27,8 @@
     question: wireshark-common/install-setuid
     value: "true"
     vtype: boolean
+  register: reconfig_wireshark
+
+- name: reconfigure wireshark
+  command: dpkg-reconfigure -f noninteractive wireshark-common
+  when: reconfig_wireshark.changed
