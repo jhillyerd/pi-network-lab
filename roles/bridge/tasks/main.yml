@@ -59,3 +59,9 @@
     state: restarted
     enabled: yes
   when: dnsmasq_config.changed or network_config.changed
+
+- name: install slow script
+  copy:
+    dest: /usr/local/sbin/slow
+    src: slow/slow
+    mode: 0755
