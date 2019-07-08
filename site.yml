@@ -1,5 +1,5 @@
 ---
-- hosts: pi-network-lab
+- hosts: pi_network_lab
   roles:
     - common
     - bridge

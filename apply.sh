@@ -6,7 +6,7 @@
 
 inventory=$(mktemp)
 
-echo "[pi-network-lab]" > "$inventory"
+echo "[pi_network_lab]" > "$inventory"
 if [ "$1" == "" ]; then
   echo "localhost ansible_connection=local" >> "$inventory"
 else
